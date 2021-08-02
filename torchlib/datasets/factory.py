@@ -2,8 +2,9 @@
 
 import os
 import numpy as np
-from torchvision import datasets 
+from torchvision import datasets
 
+from forStudy.DataFactory import CKPDataset
 from . import imaterialist
 from . import ferp
 from . import fer
@@ -179,6 +180,11 @@ class FactoryDataset(object):
             btrain=(subset=='train')
             pathname = create_folder(pathname, name)
             data = fer.FERClassicDataset(pathname, 'ckp', idenselect=idenselect, train=btrain )
+
+        elif name == 'ckp_by_myself':
+            btrain = (subset == 'train')
+            pathname = create_folder(pathname, name)
+            data = CKPDataset(train=btrain)
 
         elif name == 'jaffe':
             btrain=(subset=='train')
