@@ -1,1 +1,1 @@
-
+from forStudy import *

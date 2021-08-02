@@ -7,8 +7,8 @@ import torch.backends.cudnn as cudnn
 from torch.utils.data import Dataset, DataLoader
 from torch.utils.data.sampler import SubsetRandomSampler, WeightedRandomSampler
 from torchvision import transforms, utils
-from ..torchlib.datasets import *
-from ..torchlib.datasets.fersynthetic import SyntheticFaceDataset, SecuencialSyntheticFaceDataset
+
+from torchlib.datasets.fersynthetic import SyntheticFaceDataset, SecuencialSyntheticFaceDataset
 from torchlib.datasets.factory import FactoryDataset
 from torchlib.attentionnet import AttentionNeuralNet, AttentionSTNNeuralNet, AttentionGMMNeuralNet, \
     AttentionGMMSTNNeuralNet
@@ -19,7 +19,7 @@ from pytvision import visualization as view
 import datetime
 from argparse import ArgumentParser
 from aug import get_transforms_aug, get_transforms_det
-from SyntheticFaceDataset import *
+from forStudy.SyntheticFaceDataset import *
 
 
 def arg_parser():

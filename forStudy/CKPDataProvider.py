@@ -1,10 +1,10 @@
 import os
 import numpy as np
-from Tools import *
+from .Tools import *
 from pytvision.datasets.imageutl import dataProvide
 import cv2
 import h5py
-from SingletonClass import *
+from .SingletonClass import *
 
 # classes = ['Neutral - NE', 'Anger - AN', 'Contempt - CO', 'Disgust - DI', 'Fear - FR', 'Happiness - HA', 'Sadness - SA', 'Surprise - SU']
 Neutral = 0

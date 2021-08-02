@@ -37,7 +37,7 @@ mkdir -p $PROJECT
 mkdir -p $PROJECT/$EXP_NAME
 
 
-CUDA_VISIBLE_DEVICES=0 python ./trainCKP.py \
+CUDA_VISIBLE_DEVICES=0 python ../trainCKP.py \
 $DATA \
 --databack=$DATABACK \
 --name-dataset=$NAMEDATASET \

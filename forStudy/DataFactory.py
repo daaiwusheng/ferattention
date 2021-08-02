@@ -2,7 +2,7 @@
 # from pytvision.datasets.imageutl import dataProvide
 from pytvision.transforms.rectutils import Rect
 
-from CKPDataProvider import *
+from .CKPDataProvider import *
 
 
 def getroi():
@@ -44,9 +44,6 @@ class CKPDataset(dataProvide):
             raise ValueError('Index outside range')
         self.index = i
         # image = np.array(self.data[i].reshape(self.imsize).transpose(1, 0), dtype=np.uint8)
-        print('train :', self.train, flush=True)
-        print('images_len', len(self.images), flush=True)
-        print('index :', i, flush=True)
         image = np.array(self.ckp_data_provider.dict_image_imgarray[self.images[i]], dtype=np.uint8)
         label = self.get_fer_label(self.images[i])
         return image, label
