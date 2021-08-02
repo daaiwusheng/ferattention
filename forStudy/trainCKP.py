@@ -7,8 +7,8 @@ import torch.backends.cudnn as cudnn
 from torch.utils.data import Dataset, DataLoader
 from torch.utils.data.sampler import SubsetRandomSampler, WeightedRandomSampler
 from torchvision import transforms, utils
-
-from torchlib.datasets.fersynthetic import SyntheticFaceDataset, SecuencialSyntheticFaceDataset
+from ..torchlib.datasets import *
+from ..torchlib.datasets.fersynthetic import SyntheticFaceDataset, SecuencialSyntheticFaceDataset
 from torchlib.datasets.factory import FactoryDataset
 from torchlib.attentionnet import AttentionNeuralNet, AttentionSTNNeuralNet, AttentionGMMNeuralNet, \
     AttentionGMMSTNNeuralNet
