@@ -1,14 +1,15 @@
-import  h5py
-from torchlib import models as nnmodels
+
 import  numpy as np
 import random
 import os
 import cv2
 from pytvision.datasets import utility
-from CKPDataProvider import *
-from Tools import *
+# from .CKPDataProvider import *
+# from .Tools import *
 from torch.utils.data import random_split
 import matplotlib.pyplot as plt
+
+import sh
 
 # f = h5py.File('/Users/wangyu/Desktop/利兹上课资料/MSCP/democode/Facial-Expression-Recognition.Pytorch-master/data/CK_data.h5','r')
 # print(f.keys())
@@ -96,7 +97,7 @@ import matplotlib.pyplot as plt
 
 # 测试文件操作方法
 
-ckp_provider = CKPDataProvider()
+# ckp_provider = CKPDataProvider()
 
 
 
@@ -125,7 +126,14 @@ ckp_provider = CKPDataProvider()
 # plt.title('image') # 图像题目
 # plt.show()
 
+# 测试执行sh脚本命令
 
+st = sh.echo( 'This is great!' )
+print(type(st))
+print(sh.pwd())
+a = sh.ls("-l")
+print(a)
+sh.Command('ls')
 
 
 
