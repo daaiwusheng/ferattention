@@ -4,7 +4,8 @@
 DATABACK= None  # ~/.datasets/coco'
 DATA='~/.datasets'
 NAMEDATASET='ckp_by_myself'
-PROJECT='../out/attnet'
+#PROJECT='../out/attnet'
+PROJECT='/databig/AI' # write log to this disk on Linux
 EPOCHS=500
 TRAINITERATION=288000
 TESTITERATION=2880
@@ -67,5 +68,6 @@ $DATA \
 --arch=$ARCH \
 --finetuning \
 2>&1 | tee -a $PROJECT/$EXP_NAME/$EXP_NAME.log \
+
 
 #--parallel \

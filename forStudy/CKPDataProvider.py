@@ -23,13 +23,13 @@ class CKPDataProvider(object,metaclass=Singleton):
 
     def __init__(self, split_factor=0.8):
         # on Linux
-        # self.root_dir = '/home/steven/桌面/AICode/project_dataset/CK+/Emotion'
-        # self.r_dir_images = '/home/steven/桌面/AICode/project_dataset/CK+/cohn-kanade-images/'
-        # self.r_dir_landmarks = '/home/steven/桌面/AICode/project_dataset/CK+/Landmarks/'
+        self.root_dir = '/home/steven/桌面/AICode/project_dataset/CK+/Emotion'
+        self.r_dir_images = '/home/steven/桌面/AICode/project_dataset/CK+/cohn-kanade-images/'
+        self.r_dir_landmarks = '/home/steven/桌面/AICode/project_dataset/CK+/Landmarks/'
         # on Mac
-        self.root_dir = '/Users/wangyu/Desktop/利兹上课资料/MSCP/dataset/CK+/Emotion/'
-        self.r_dir_images = '/Users/wangyu/Desktop/利兹上课资料/MSCP/dataset/CK+/cohn-kanade-images/'
-        self.r_dir_landmarks = '/Users/wangyu/Desktop/利兹上课资料/MSCP/dataset/CK+/Landmarks/'
+        # self.root_dir = '/Users/wangyu/Desktop/利兹上课资料/MSCP/dataset/CK+/Emotion/'
+        # self.r_dir_images = '/Users/wangyu/Desktop/利兹上课资料/MSCP/dataset/CK+/cohn-kanade-images/'
+        # self.r_dir_landmarks = '/Users/wangyu/Desktop/利兹上课资料/MSCP/dataset/CK+/Landmarks/'
 
         self.dirs_emotion_actors = self.get_dirs_emotion_actors()  # actor means the code like S506,
         self.key_sequence_with_labels = []  # 存储 key值 (如S506/002),按这个key就可以索引出标签,图片,landmarks,而不会乱掉

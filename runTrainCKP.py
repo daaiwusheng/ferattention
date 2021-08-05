@@ -25,7 +25,8 @@ from forStudy.SyntheticFaceDataset import *
 DATABACK = None  # ~/.datasets/coco'
 DATA = '~/.datasets'
 NAMEDATASET = 'ckp_by_myself'
-PROJECT = '../out/attnet'
+# PROJECT='../out/attnet'
+PROJECT = '/databig/AI'  # write log to this disk on Linux
 EPOCHS = 5
 TRAINITERATION = 288000
 TESTITERATION = 2880
@@ -50,7 +51,10 @@ KFOLD = 0
 NACTOR = 10
 BACKBONE = 'preactresnet'  # preactresnet, resnet, cvgg
 
-EXP_NAME = 'feratt_' + NAMEMETHOD + '_' + ARCH + '_' + LOSS + '_' + OPT + '_' + NAMEDATASET + '_dim' + str(DIM) + '_bb' + BACKBONE + '_fold' + str(KFOLD) + '_000'
+EXP_NAME = 'feratt_' + NAMEMETHOD + '_' + ARCH + '_' + LOSS + '_' + OPT + '_' + NAMEDATASET + '_dim' + str(
+    DIM) + '_bb' + BACKBONE + '_fold' + str(KFOLD) + '_000'
+
+
 # experiment name
 
 
