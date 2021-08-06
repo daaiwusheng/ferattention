@@ -128,13 +128,17 @@ import sh
 
 # 测试执行sh脚本命令
 
-st = sh.echo( 'This is great!' )
-print(type(st))
-print(sh.pwd())
-a = sh.ls("-l")
-print(a)
-sh.Command('ls')
+# st = sh.echo( 'This is great!' )
+# print(type(st))
+# print(sh.pwd())
+# a = sh.ls("-l")
+# print(a)
+# sh.Command('ls')
 
+# 判断是否属于某个类
+a = np.array([1,2])
+b = isinstance(a, np.ndarray)
+print(b)
 
 
 

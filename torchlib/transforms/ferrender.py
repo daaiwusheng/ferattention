@@ -158,6 +158,7 @@ class Generator(object):
         dz = 50*rn.random()
         dx = int( rn.random() * ( (bk_w + dz) - im_w ) )
         dy = int( rn.random() * ( (bk_h + dz) - im_h ) )
+        # randomly layout image in back
         back = back[ dy:(dy+im_h), dx:(dx+im_w), : ]
         back = cv2.resize(back, (im_w,im_h) ) 
         
