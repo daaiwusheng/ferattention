@@ -296,7 +296,7 @@ class AttentionNeuralNet(AttentionNeuralNetAbstract):
         data_time = AverageMeter()
         batch_time = AverageMeter()
 
-        # switch to evaluate mode
+        # switch to train mode
         self.net.train()
 
         end = time.time()

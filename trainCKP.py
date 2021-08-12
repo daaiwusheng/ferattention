@@ -146,7 +146,7 @@ def main():
 
     # resume
     network.resume(os.path.join(network.pathmodels, args.resume))
-    cudnn.benchmark = True
+    cudnn.benchmark = True  # then cuDNN can run fater
 
     kfold = args.kfold
     nactores = args.nactor
