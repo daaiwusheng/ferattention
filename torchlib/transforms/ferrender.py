@@ -5,9 +5,9 @@ import skimage.color as skcolor
 import scipy.ndimage as ndi
 import cv2
 import random as rn
-
+import matplotlib
 from pytvision.transforms import functional as F
-
+from forStudy.Tools import *
 
 def hflip( image, mask ):
     if rn.random() < 0.5:
@@ -109,31 +109,47 @@ class Generator(object):
         image = img.copy()
         mask  = mask.copy()
         mask  = (mask[:,:,0] == 0).astype(np.uint8)
-        
+        # show_image(image, '_image')  # test code
+        # show_image(back, 'b_image')  # test code
         image = norm(image, mask)
-        back  = norm(back)   
-        
+        back  = norm(back)
+        # show_image(image, 'norm_image')  # test code
+        # show_image(back, 'norm_b_image')  # test code
         #image_o, mask_o = image, mask
         
         #tranform
         image, mask = scale( image, mask, factor=factor )
-        image, mask = hflip( image, mask )       
+        # show_image(image, 'transform_image')  # test code
+        # show_image(mask, 'mask_image')  # test code
+        image, mask = hflip( image, mask )
+        # show_image(image, 'flip_image')  # test code
+        # show_image(mask, 'flip_image')  # test code
         image_t, mask_t, h = transform( image, mask, angle=angle, translation=translation, warp=warp )        
         image_ilu = image_t.copy()
-        
+        # show_image(image_t, 'transform_image')  # test code
+        # show_image(mask_t, 'mask_image_t')  # test code
         #normalize illumination change
         if iluminate:            
             image_ilu = ligthnorm(image_t, mask_t, back)
-        
+        # show_image(image_ilu, 'image_ilu')  # test code
         #filter mask 
         mask = filtermask(mask)
         mask_t = filtermask(mask_t)
-        
-        
-        image_org = (mask_t)*image_t   
+        ##### test code vvv ####
+        mask_test = mask.astype(int)
+        mask_t_test = mask_t.astype(int)
+        # show_image(mask_test, 'filter_mask')  # test code
+        # show_image(mask_t_test, 'filter_mask_t')  # test code
+        test_v_1 = 1 - mask_t
+        test_v_2 = back * test_v_1
+        # show_image(test_v_1, 'test_v_1')
+        # show_image(test_v_2, 'test_v_2')
+        ##### test code ^^^^ ####
+        image_org = (mask_t)*image_t
+        # show_image(image_org, 'image_org_mult')  # test code
         #image_org = back*(1-mask_t) + (mask_t)*image_t   
         image_ilu = back*(1-mask_t) + (mask_t)*image_ilu
-        
+        # show_image(image_ilu, 'image_ilu')  # test code
         return image_org, image_ilu, mask_t, h
     
 
@@ -143,7 +159,7 @@ class Generator(object):
         
         imsize = 128 #256
         image = cv2.resize(image, (imsize,imsize) ) 
-        
+        # show_image(image,'ori_image')  # test code
         im_h,im_w = image.shape[:2]
         bk_h,bk_w = back.shape[:2]
         
@@ -152,18 +168,22 @@ class Generator(object):
         image_pad[ pad:-pad, pad:-pad, :  ] =  image
         image = image_pad
         im_h,im_w = im_h+2*pad, im_w+2*pad
-        
+
+        # show_image(image, 'padding_image')  # test code
+
         mask = ( image < 1.0 ).astype( np.uint8 )
-        
+        # show_image(mask, 'mask_image')  # test code
         dz = 50*rn.random()
         dx = int( rn.random() * ( (bk_w + dz) - im_w ) )
         dy = int( rn.random() * ( (bk_h + dz) - im_h ) )
         # randomly layout image in back
         back = back[ dy:(dy+im_h), dx:(dx+im_w), : ]
-        back = cv2.resize(back, (im_w,im_h) ) 
-        
+        back = cv2.resize(back, (im_w,im_h) )
+        # show_image(back, 'back_image')  # test code
         image_org, image_ilu, mask, h = self.mixture( image, mask, back, self.iluminate, self.angle, self.translation, self.warp, self.factor  )
         mask = mask.astype(int)
-        
+        # show_image(image_org, 'image_org')  # test code
+        # show_image(image_ilu, 'image_ilu')  # test code
+        # show_image(mask, 'mask_final')  # test code
         return image_org, image_ilu, mask, h
         

@@ -136,9 +136,14 @@ import sh
 # sh.Command('ls')
 
 # 判断是否属于某个类
-a = np.array([1,2])
-b = isinstance(a, np.ndarray)
-print(b)
+# a = np.array([1,2])
+# b = isinstance(a, np.ndarray)
+# print(b)
 
+# 图像 展示
+from skimage.io import imread, imshow
+from skimage import data
 
+image = data.astronaut()
+imshow(image)
 

@@ -37,7 +37,7 @@ BATCHSIZE = 32  # 32, 64, 128, 160, 200, 240
 LEARNING_RATE = 0.0001
 MOMENTUM = 0.5
 PRINT_FREQ = 100
-WORKERS = 4
+WORKERS = 0
 RESUME = 'model_best.pth.tar'  # chk000000, model_best
 GPU = 0
 NAMEMETHOD = 'attnet'  # attnet, attstnnet, attgmmnet, attgmmstnnet
@@ -126,13 +126,13 @@ def main():
 
     for i, (x_org, x_img, y_mask, meta) in enumerate(train_loader):
         batch_size = x_img.shape[0]
-        show_image(x_img[0, :].numpy().transpose(1, 2, 0), 'x_img')
-
+        # show_image(x_img[0, :].numpy().transpose(1, 2, 0), 'x_img')
+        #
         y_mask_show = expand_2_to_3(y_mask[0, :].numpy().transpose(1, 2, 0))
         show_image(y_mask_show, 'y_mask')
         y_lab = meta[:, 0]
         y_theta = meta[:, 1:].view(-1, 2, 3)
-
+        print(y_theta)
     # print neural net class
     print('SEG-Torch: {}'.format(datetime.datetime.now()))
 
